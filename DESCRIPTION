@@ -20,7 +20,6 @@ Imports:
     ggplot2 (>= 3.3),
     readr (>= 1.4),
     purrr (>= 0.3),
-    dplyr (>= 1.0),
     plotly (>= 4.9),
     shiny (>= 1.5)
 Remotes:

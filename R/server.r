@@ -90,7 +90,7 @@ server = function(input, output, session) {
         names(arg.inputs) = NULL
         # wrap UI elements in row with header
         ui.list[[i]] = do.call(fluidRow,
-          c(list(h3(fun.name)), arg.inputs))
+          c(list(h4(code(fun.name))), arg.inputs))
       }
       ui.list
     })
@@ -148,20 +148,24 @@ server = function(input, output, session) {
   })
 
   # plot outputs
-  output$plot = renderPlotly(ggplotly({
-      if (input$plotcolor %in% names(new.df$df)) {
-        ggplot(new.df$df) +
-          aes(x = !!as.name(input$x), y = !!as.name(input$y),
-            color = !!as.name(input$plotcolor)) +
-          geom_point()
-      } else {
-        ggplot(new.df$df) +
-          aes(x = !!as.name(input$x), y = !!as.name(input$y)) +
-          geom_point() +
-          theme_bw()
-      }
-  }, dynamicTicks = TRUE))
-
+  output$plot = renderPlotly({
+    tryCatch(
+      ggplotly({
+        if (input$plotcolor %in% names(new.df$df)) {
+          ggplot(new.df$df) +
+            aes(x = !!as.name(input$x), y = !!as.name(input$y),
+              color = !!as.name(input$plotcolor)) +
+            geom_point()
+        } else {
+          ggplot(new.df$df) +
+            aes(x = !!as.name(input$x), y = !!as.name(input$y)) +
+            geom_point() +
+            theme_bw()
+        }
+      }, dynamicTicks = TRUE),
+      error = function(e) invisible(NULL)
+    )
+  })
 
   # quit app
   observe({
