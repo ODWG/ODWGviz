@@ -23,8 +23,8 @@ Imports:
     dplyr (>= 1.0),
     plotly (>= 4.9),
     shiny (>= 1.5)
-Remotes: 
-    ODWG/odwgtools
+Remotes:
+    ODWG/ODWGtools
 Collate: 
     'ODWGviz.r'
     'ui.r'
