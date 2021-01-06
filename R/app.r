@@ -5,9 +5,9 @@ NULL
 #' @keywords internal
 shiny_app = shinyApp(ui, server)
 
-#' Electronic Form Uploader
+#' Outlier Detection Visualization
 #'
-#' Start the form upload application.
+#' Start the outlier detection visualization application.
 #'
 #' @import shiny
 #' @export

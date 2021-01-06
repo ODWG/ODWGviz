@@ -2,10 +2,10 @@
 % Please edit documentation in R/app.r
 \name{odwg_app}
 \alias{odwg_app}
-\title{Electronic Form Uploader}
+\title{Outlier Detection Visualization}
 \usage{
 odwg_app()
 }
 \description{
-Start the form upload application.
+Start the outlier detection visualization application.
 }

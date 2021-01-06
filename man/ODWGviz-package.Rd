@@ -9,6 +9,6 @@
 Package for testing and visualizing outlier detection algorithms.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Michael Koohafkan \email{michael.koohafkan@water.ca.gov}
 
 }

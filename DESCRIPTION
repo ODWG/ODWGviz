@@ -1,20 +1,21 @@
 Package: ODWGviz
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Outlier Detection Visualization
+Version: 0.1.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Michael",
+           family = "Koohafkan",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+           email = "michael.koohafkan@water.ca.gov")
+Description: An R package for visualizing outlier detection routines
+    provided by the ODWGtools package.
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: 
+Imports:
+    stats,
+    utils,
     ODWGtools (>= 0.6),
     ggplot2 (>= 3.3),
     readr (>= 1.4),
@@ -22,6 +23,8 @@ Imports:
     dplyr (>= 1.0),
     plotly (>= 4.9),
     shiny (>= 1.5)
+Remotes: 
+    ODWG/odwgtools
 Collate: 
     'ODWGviz.r'
     'ui.r'

@@ -5,9 +5,11 @@
 #' @import shiny
 #' @import ggplot2
 #' @import ODWGtools
+#' @importFrom stats setNames
+#' @importFrom utils lsf.str
 #' @importFrom readr read_csv
 #' @importFrom purrr imap map
-#' @importFrom plotly ggplotly
+#' @importFrom plotly ggplotly renderPlotly
 #' @keywords internal
 server = function(input, output, session) {
   # collect available algorithms
@@ -46,8 +48,6 @@ server = function(input, output, session) {
       }
     }
   })
-
-  # create plot here??
 
   # populate algorithm arguments
   observeEvent(input$choose, {

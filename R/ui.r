@@ -3,6 +3,7 @@
 #' UI for shiny app.
 #'
 #' @import shiny
+#' @importFrom plotly plotlyOutput
 #' @keywords internal
 ui = fluidPage(
   titlePanel("Outlier Detection Visualization"),
@@ -45,4 +46,3 @@ ui = fluidPage(
     )
   )
 )
-
