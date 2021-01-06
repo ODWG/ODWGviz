@@ -15,13 +15,12 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    ODWGtools,
-    ggplot2,
-    readr,
-    purrr,
-    dplyr,
-    glue,
-    plotly,
+    ODWGtools (>= 0.6),
+    ggplot2 (>= 3.3),
+    readr (>= 1.4),
+    purrr (>= 0.3),
+    dplyr (>= 1.0),
+    plotly (>= 4.9),
     shiny (>= 1.5)
 Collate: 
     'ODWGviz.r'
