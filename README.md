@@ -1,5 +1,9 @@
 # ODWGviz
 
+<!-- badges: start -->
+[![R build status](https://github.com/ODWG/ODWGviz/workflows/R-CMD-check/badge.svg)](https://github.com/ODWG/ODWGviz/actions)
+<!-- badges: end -->
+
 
 An R package for visualizing outlier detection routines provided by
 the [`ODWGtools`](https://github.com/ODWG/ODWGtools/) package.
