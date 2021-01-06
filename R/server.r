@@ -72,7 +72,7 @@ server = function(input, output, session) {
       for (i in seq_along(ui.list)) {
         fun.name = names(arglist)[i]
         fun.args = lapply(arglist[[i]], deparse)
-        # arg.inputs names are formalsg
+        # arg.inputs names are formals
         # but UI elements of arg.inputs have fun.name:: prepended
         arg.inputs = imap(fun.args,
           ~ textInput(paste0(fun.name, ".", .y), .y, value = .x))
@@ -121,28 +121,29 @@ server = function(input, output, session) {
       }
       # loop and apply functions
       for (fun in names(fun.settings)) {
-        # create an environment containing the function arguments
-        fun.expr = map(fun.settings[[fun]],
-          ~ parse(text = .x))
-        fun.env = new.env()
-        for (arg in names(fun.expr)) {
-          if (arg == "x") {
-            fun.env[[arg]] = new.df$df[[fun.settings[[fun]]$x]]
-          } else if (arg == "xs") {
-            fun.env[[arg]] = new.df$df[fun.settings[[fun]]$xs]
-          } else {
-            fun.env[[arg]] = eval(fun.expr[[arg]], envir = fun.env)
+        new.df$df[fun] = tryCatch({
+          # create an environment containing the function arguments
+          fun.expr = map(fun.settings[[fun]],
+            ~ parse(text = .x))
+          fun.env = new.env()
+          for (arg in names(fun.expr)) {
+            if (arg == "x") {
+              fun.env[[arg]] = new.df$df[[fun.settings[[fun]]$x]]
+            } else if (arg == "xs") {
+              fun.env[[arg]] = new.df$df[fun.settings[[fun]]$xs]
+            } else {
+              fun.env[[arg]] = eval(fun.expr[[arg]], envir = fun.env)
+            }
           }
-        }
-        # evaluate the function expression
-        new.df$df[fun] = tryCatch(do.call(fun, as.list(fun.env)),
-          error = function(e) {
-            showNotification(e$message, type = "error")
-            NULL
-          })
+          # evaluate the function expression
+          do.call(fun, as.list(fun.env))
+        }, error = function(e) {
+          showNotification(e$message, type = "error")
+          NULL
+        })
       }
       updateSelectInput(session, "plotcolor",
-        choices = c("-", fun.list), selected = "-")
+        choices = c(fun.list, "-"))
       removeModal()
     }
   })

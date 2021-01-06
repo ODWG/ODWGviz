@@ -21,28 +21,32 @@ ui = fluidPage(
       ),
       br(),
       fluidRow(
-        column(6,
-          selectInput("x", "X-axis", c(""))
-        ),
-        column(6,
-          selectInput("y", "Y-axis", c(""))
-        )
-      ),
-      fluidRow(
         selectInput("algorithms", "Algorithms", c(""),
           multiple = TRUE)
       ),
       fluidRow(
-        column(6, actionButton("choose", "Choose algorithms")),
-        column(6, actionButton("flag", "Flag data"), align = "right")
+        column(6, actionButton("choose", "Confirm algorithms")),
+        column(6, actionButton("flag", "Detect outliers"),
+          align = "right")
       ),
       br(),
+      fluidRow(p(strong("Algorithm settings")), align = "center"),
       uiOutput("arguments")
     ),
     mainPanel(
-        selectInput("plotcolor", "Color", choices = c("-"),
-          selected = "-"),
-        plotlyOutput("plot")
+      fluidRow(
+        column(4,
+          selectInput("x", "X-axis", c(""))
+        ),
+        column(4,
+          selectInput("y", "Y-axis", c(""))
+        ),
+        column(4,
+        selectInput("plotcolor", "Algorithm", choices = c("-"),
+          selected = "-")
+        )
+      ),
+      plotlyOutput("plot")
     )
   )
 )
