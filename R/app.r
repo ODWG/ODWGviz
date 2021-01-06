@@ -9,6 +9,11 @@ shiny_app = shinyApp(ui, server)
 #'
 #' Start the outlier detection visualization application.
 #'
+#' @examples
+#' if (interactive()) {
+#'   odwg_app()
+#' }
+#'
 #' @import shiny
 #' @export
 odwg_app = function() {

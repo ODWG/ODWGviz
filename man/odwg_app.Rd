@@ -9,3 +9,9 @@ odwg_app()
 \description{
 Start the outlier detection visualization application.
 }
+\examples{
+if (interactive()) {
+  odwg_app()
+}
+
+}
